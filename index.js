@@ -17,10 +17,15 @@ app.use("/api/auth", userRoutes);
 app.use("/api/messages", messageRoute);
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://" +
+      process.env.MONGO_USER_PASS +
+      "@cluster0.iyjxdyw.mongodb.net/chat",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("DB Connetion Successfull");
   })
